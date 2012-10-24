@@ -9,6 +9,6 @@ package aufgabenblatt1.aufgabe3;
  */
 public class main {
     public static void main(String[]args){
-        System.out.println("hallo123");
+        System.out.println("hallweroGrün123");
     }
 }
