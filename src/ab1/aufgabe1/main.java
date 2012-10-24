@@ -1,10 +1,12 @@
-package aufgabenblatt1.aufgabe3;
+package ab1.aufgabe1;
 
 /**
  * Created with IntelliJ IDEA.
+ * ALP III - Julian
+ * <p/>
  * User: Baka
  * Date: 24.10.12
- * Time: 15:04
+ * Time: 16:34
  * To change this template use File | Settings | File Templates.
  */
 public class main {
