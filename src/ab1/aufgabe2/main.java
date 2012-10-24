@@ -12,7 +12,7 @@ package ab1.aufgabe2;
 public class main {
     public static void main(String[]args){
 
-        MyQueue<Integer> q = new MyQueue<Integer>();
+        Queue<Integer> q = new LinkedQueue<Integer>(); //new MyQueue<Integer>();
 
         System.out.println("SIZE: " + q.size() + "| isEmpty? " + q.isEmpty());
 
