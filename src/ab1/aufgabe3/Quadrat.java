@@ -13,7 +13,7 @@ import java.awt.*;
  */
 public class Quadrat extends Rechteck{
 
-    protected static Point calculateB(Point d, int length){
+    private static Point calculateB(Point d, int length){
         return new Point((int)d.getX() + length, (int)d.getY() - length);
     }
 

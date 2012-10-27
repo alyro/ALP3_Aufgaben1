@@ -13,11 +13,11 @@ import java.awt.*;
  */
 public class Rechteck extends Parellelogramm {
 
-    protected static Point calculateC(Point d, Point b){
+    private static Point calculateC(Point d, Point b){
         return new Point((int)b.getX(), (int)d.getY());
     }
 
-    protected static Point calculateA(Point d, Point b){
+    private static Point calculateA(Point d, Point b){
         return new Point((int)d.getX(), (int)b.getY());
     }
 
