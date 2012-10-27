@@ -40,6 +40,17 @@ public class Trapez extends Viereck {
     }
 
     /**
+     * calculate the slope
+     * @param p1
+     * @param p2
+     * @return
+     */
+    protected double calculateSlope(Point p1, Point p2){
+        Line2D line = new Line2D.Float(p1,p2);
+        return calculateSlope(line);
+    }
+
+    /**
      * calulates the slope of a line
      * @param line
      * @return

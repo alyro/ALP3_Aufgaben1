@@ -78,6 +78,14 @@ public class Viereck implements Figur {
         return this.a.distance(this.d);
     }
 
+    protected double getDiagonalAC(){
+        return this.a.distance(this.c);
+    }
+
+    protected double getDiagonalBD(){
+        return this.b.distance(this.d);
+    }
+
 
     @Override
     public double flaeche() {

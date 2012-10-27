@@ -1,5 +1,7 @@
 package ab1.aufgabe3;
 
+import java.awt.*;
+
 /**
  * Created with IntelliJ IDEA.
  * ALP III - Julian
@@ -11,6 +13,11 @@ package ab1.aufgabe3;
  */
 public class main {
     public static void main(String[]args){
-        System.out.println("hallweroGrün123");
+
+        Point d = new Point(0,5);
+        Point b = new Point(5,0);
+        Rechteck r = new Rechteck(d,b);
+        System.out.println("done");
+
     }
 }
