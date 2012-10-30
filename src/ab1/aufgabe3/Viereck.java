@@ -1,6 +1,7 @@
 package ab1.aufgabe3;
 
 import java.awt.*;
+import java.awt.geom.Line2D;
 
 /**
  * Created with IntelliJ IDEA.
@@ -63,27 +64,27 @@ public class Viereck implements Figur {
     }
 
     protected double getAB(){
-        return this.a.distance(this.b);
+        return this.calculateDistance(this.a,this.b);
     }
 
     protected double getBC(){
-        return this.b.distance(this.c);
+        return this.calculateDistance(this.b,this.c);
     }
 
     protected double getCD(){
-        return this.c.distance(this.d);
+        return this.calculateDistance(this.c,this.d);
     }
 
     protected double getAD(){
-        return this.a.distance(this.d);
+        return this.calculateDistance(this.a,this.d);
     }
 
     protected double getDiagonalAC(){
-        return this.a.distance(this.c);
+        return this.calculateDistance(this.a,this.c);
     }
 
     protected double getDiagonalBD(){
-        return this.b.distance(this.d);
+        return this.calculateDistance(this.b,this.d);
     }
 
 
@@ -91,14 +92,11 @@ public class Viereck implements Figur {
     public double flaeche() {
          if (this.flaeche < 0){
              // we only need to calculate this once (lazy loading)
-             // gaußsche Trapezformel:
-             this.flaeche =
-                     (1/2) * Math.abs(
-                        ((this.a.getY() - this.c.getY())*
-                        (this.d.getX() - this.b.getX()))+
-                        ((this.b.getY() - this.d.getY())*
-                        (this.a.getX() - this.c.getX()))
-                     );
+             // Satz des Pythagoras
+             double slopeD1 = this.calculateSlope(this.getA(),this.getC());
+             double slopeD2 = this.calculateSlope(this.getB(),this.getD());
+             double alpha = this.getAngle(slopeD1,slopeD2);
+             this.flaeche = (1/2)*slopeD1*slopeD2*Math.sin(alpha);
          }
          return this.flaeche;
     }
@@ -114,6 +112,60 @@ public class Viereck implements Figur {
 
     @Override
     public int compareTo(Figur o) {
-        return Double.compare(this.flaeche(), o.flaeche());
+        ////return Double.compare(this.flaeche(), o.flaeche());
+        double self = this.flaeche();
+        double other = o.flaeche();
+        return self > other ? 1 : self < other ? -1 : 0;
+    }
+
+    /**
+     * Attention-> this method cannot calculated angles bigger than 90°!
+     * (because m1 and m2 have infinite length)
+     * @param m1 slope 1
+     * @param m2 slope 2
+     * @return
+     */
+    protected double getAngle(double m1, double m2){
+        double a = Math.abs((m1-m2)/(1+(m1*m2)));
+        a = Math.atan(a);
+        a = Math.toDegrees(a);
+        return Double.isNaN(a) ? 90.0 : a;
+    }
+
+    /**
+     * calculate the slope
+     * @param p1
+     * @param p2
+     * @return
+     */
+    protected double calculateSlope(Point p1, Point p2){
+        Line2D line = new Line2D.Float(p1,p2);
+        return calculateSlope(line);
+    }
+
+    /**
+     * calulates the slope of a line
+     * @param line
+     * @return
+     */
+    protected double calculateSlope(Line2D line){
+        double x1 = line.getP1().getX();
+        double y1 = line.getP1().getY();
+        double x2 = line.getP2().getX();
+        double y2 = line.getP2().getY();
+        return (y2 - y1)/(x2 - x1);
+    }
+
+    /**
+     * calulates the distance between two points
+     * @param p1
+     * @param p2
+     * @return distance between p1 and p2
+     */
+    private double calculateDistance(Point p1, Point p2){
+        // using pythagorean theorem
+        return Math.sqrt(
+                Math.pow((p2.getX() - p1.getX()),2) +
+                Math.pow((p2.getY() - p1.getY()),2));
     }
 }

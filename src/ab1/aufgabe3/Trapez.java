@@ -38,28 +38,4 @@ public class Trapez extends Viereck {
     public double flaeche(){
         return ((this.getAB() + this.getCD())/2) * this.h;
     }
-
-    /**
-     * calculate the slope
-     * @param p1
-     * @param p2
-     * @return
-     */
-    protected double calculateSlope(Point p1, Point p2){
-        Line2D line = new Line2D.Float(p1,p2);
-        return calculateSlope(line);
-    }
-
-    /**
-     * calulates the slope of a line
-     * @param line
-     * @return
-     */
-    private double calculateSlope(Line2D line){
-        double x1 = line.getP1().getX();
-        double y1 = line.getP1().getY();
-        double x2 = line.getP2().getX();
-        double y2 = line.getP2().getY();
-        return (y2 - y1)/(x2 - x1);
-    }
 }

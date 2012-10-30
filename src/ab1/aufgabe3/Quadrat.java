@@ -22,7 +22,7 @@ public class Quadrat extends Rechteck{
     }
 
     public double flaeche(){
-        return Math.sqrt(this.getAB());
+        return Math.pow(this.getAB(),2);
     }
 
     public double umfang(){

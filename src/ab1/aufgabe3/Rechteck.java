@@ -44,22 +44,4 @@ public class Rechteck extends Parellelogramm {
     public double flaeche(){
         return this.getAD() * this.getAB();
     }
-
-    public double umfang(){
-        return 2 * (this.getAD() + this.getAB());
-    }
-
-    /**
-     * Attention-> this method cannot calculated angles bigger than 90°!
-     * (because m1 and m2 have infinite length)
-     * @param m1 slope 1
-     * @param m2 slope 2
-     * @return
-     */
-    protected double getAngle(double m1, double m2){
-        double a = Math.abs((m1-m2)/(1+(m1*m2)));
-        a = Math.atan(a);
-        a = Math.toDegrees(a);
-        return Double.isNaN(a) ? 90.0 : a;
-    }
 }

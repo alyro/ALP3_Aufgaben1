@@ -20,6 +20,10 @@ public class Rhombus extends Drache {
         }
     }
 
+    public double flaeche(){
+        return (1/2)*this.getDiagonalAC()*this.getDiagonalBD();
+    }
+
     public double umfang(){
         return 4 * this.getAB();
     }

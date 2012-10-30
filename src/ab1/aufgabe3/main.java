@@ -16,8 +16,12 @@ public class main {
 
         Point d = new Point(0,5);
         Point b = new Point(5,0);
-        Rechteck r = new Rechteck(d,b);
-        System.out.println("done");
+
+        double dist1 = Viereck.calculateDistance(d,b);
+        double dist2 = Viereck.calculateDistance(b, d);
+        double dist3 = d.distance(b);
+
+        System.out.println("#1: " + dist1 + " - #2: " + dist2 + " - #3: " + dist3);
 
     }
 }
