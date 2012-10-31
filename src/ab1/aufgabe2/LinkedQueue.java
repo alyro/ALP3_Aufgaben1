@@ -38,11 +38,9 @@ public class LinkedQueue<E> implements Queue<E> {
 
     @Override
     public E dequeue() throws EmptyQueueException {
-        try{
-            return this.buffer.removeFirst();
-        }catch (Exception e){
+        if (this.size() == 0){
             throw new EmptyQueueException("nicht so geil");
         }
-
+        return this.buffer.removeFirst();
     }
 }
